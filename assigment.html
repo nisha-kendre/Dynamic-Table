@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Table</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    input[type="text"] {
+      width: 100%;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dynamic Table</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>address</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+    </tbody>
+  </table>
+  <button onclick="addRow()">Add Row</button>
+
+  <script>
+    function addRow() {
+      const tableBody = document.getElementById("table-body");
+      const newRow = tableBody.insertRow(tableBody.rows.length);
+
+      const cell1 = newRow.insertCell(0);
+      const cell2 = newRow.insertCell(1);
+      const cell3 = newRow.insertCell(2);
+      const cell4 = newRow.insertCell(3);
+
+      const nameInput = document.createElement("input");
+      nameInput.type = "text";
+      cell1.appendChild(nameInput);
+
+      const emailInput = document.createElement("input");
+      emailInput.type = "text";
+      cell2.appendChild(emailInput);
+
+      const addressInput = document.createElement("input");
+      emailInput.type = "text";
+      cell3.appendChild(addressInput);
+
+      const deleteButton = document.createElement("button");
+      deleteButton.innerHTML = "Delete";
+      deleteButton.onclick = function () {
+        tableBody.deleteRow(newRow.rowIndex);
+      };
+      cell4.appendChild(deleteButton);
+    }
+  </script>
+</body>
+</html>
